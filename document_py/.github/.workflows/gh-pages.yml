@@ -1,0 +1,29 @@
+name: Deploy MkDocs site
+
+on:
+  push:
+    branches:
+      - main   # 你的主分支
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'  # mkdocs 兼容，不要用 3.14！
+
+      - name: Install dependencies
+        run: |
+          pip install .
+      
+      - name: Build and Deploy
+        uses: mkdocs/actions@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

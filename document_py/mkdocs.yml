@@ -1,0 +1,13 @@
+site_name: Rene's document
+theme:
+  name: material
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.blocks.admonition
+
+nav:
+  - Index: index.md
+  - main:  main.md
